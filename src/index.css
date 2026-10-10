@@ -23,7 +23,18 @@ body::-webkit-scrollbar {
   width: 14px;
 }
 
-body::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track-piece {
+  background: transparent;
+  border: 0;
+}
+
+body::-webkit-scrollbar-button,
+body::-webkit-scrollbar-button:single-button,
+body::-webkit-scrollbar-button:double-button {
+  width: 0;
+  height: 0;
+  display: none;
   background: transparent;
 }
 
