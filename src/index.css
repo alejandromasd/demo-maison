@@ -44,7 +44,7 @@ body.is-dragging-scrollbar {
   right: 0;
   width: 8px;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(228, 210, 190, 0.92), rgba(154, 116, 82, 0.9));
+  background: rgba(154, 116, 82, 0.9);
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.38),
     0 10px 26px rgba(45, 41, 38, 0.18);
@@ -62,11 +62,6 @@ body.is-dragging-scrollbar .floating-scrollbar__thumb {
   opacity: 1;
 }
 
-.floating-scrollbar__thumb:hover,
-body.is-dragging-scrollbar .floating-scrollbar__thumb {
-  width: 10px;
-  background: linear-gradient(180deg, rgba(239, 225, 208, 1), rgba(135, 97, 67, 0.98));
-}
 
 button,
 a {
