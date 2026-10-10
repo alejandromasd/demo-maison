@@ -62,6 +62,24 @@ body.is-dragging-scrollbar .floating-scrollbar__thumb {
   opacity: 1;
 }
 
+@media (max-width: 767px), (pointer: coarse) {
+  html {
+    scrollbar-gutter: auto;
+    scrollbar-width: auto;
+    scroll-behavior: auto;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: auto;
+    height: auto;
+  }
+
+  .floating-scrollbar {
+    display: none;
+  }
+}
+
 
 button,
 a {

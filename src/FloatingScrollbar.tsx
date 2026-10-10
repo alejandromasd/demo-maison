@@ -44,6 +44,7 @@ export default function FloatingScrollbar() {
     };
 
     const update = (show = false) => {
+      if (window.matchMedia("(max-width: 767px), (pointer: coarse)").matches) return;
       setScrollbar(getScrollbarState());
       if (show) {
         clearHideTimer();
