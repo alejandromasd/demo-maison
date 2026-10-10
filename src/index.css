@@ -9,11 +9,46 @@
 }
 
 html {
+  scrollbar-gutter: stable;
   scroll-behavior: smooth;
+  scrollbar-color: rgba(154, 116, 82, 0.72) transparent;
+  scrollbar-width: thin;
 }
 
 body {
   margin: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 14px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  min-height: 64px;
+  border: 4px solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(228, 210, 190, 0.95), rgba(154, 116, 82, 0.92))
+    border-box;
+  background-clip: padding-box;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.32),
+    0 10px 26px rgba(45, 41, 38, 0.18);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(180deg, rgba(239, 225, 208, 1), rgba(135, 97, 67, 0.98))
+    border-box;
+  background-clip: padding-box;
+}
+
+body::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 button,
