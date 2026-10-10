@@ -1,0 +1,10 @@
+{
+  "description": "Offers a sleek, professional online store for wigs and haircare products, enhancing user experience with elegant design and easy shopping.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
