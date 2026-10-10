@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
+import MenuToggle from "./MenuToggle";
 
 type Product = { name: string; category: string; detail: string; price: string; previousPrice?: string; image: string; badge: string; rating: string; colors: string[] };
 
 const products: Product[] = [
   { name: "Luna Top Lace", category: "Prótesis capilar", detail: "Cabello natural · Monofilamento", price: "389 €", image: "https://images.unsplash.com/photo-1583331030595-6601e6c7b5d5?auto=format&fit=crop&w=900&q=86", badge: "Más vendido", rating: "4.9", colors: ["#2c201b", "#6d4936", "#b58c68"] },
-  { name: "Aura Lace Front", category: "Peluca médica", detail: "Fibra premium · Lace frontal", price: "329 €", image: "https://images.unsplash.com/photo-1613849577924-6db8fe349e70?auto=format&fit=crop&w=900&q=86", badge: "Nuevo", rating: "4.8", colors: ["#211713", "#5d3c2c", "#a87957", "#d2b091"] },
+  { name: "Aura Lace Front", category: "Peluca médica", detail: "Fibra premium · Lace frontal", price: "329 €", image: "https://images.unsplash.com/photo-1625503337559-d3e99da12715?auto=format&fit=crop&w=900&q=86", badge: "Nuevo", rating: "4.8", colors: ["#211713", "#5d3c2c", "#a87957", "#d2b091"] },
   { name: "Natura Volume 20", category: "Sistema capilar", detail: "Cabello Remy · Base de tul", price: "449 €", image: "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=900&q=86", badge: "", rating: "4.9", colors: ["#30231d", "#76513e", "#c69a72"] },
   { name: "Clara Bob 14", category: "Peluca natural", detail: "Cabello humano · Lace front", price: "359 €", previousPrice: "399 €", image: "https://images.unsplash.com/photo-1590610831759-0fca59c21a23?auto=format&fit=crop&w=900&q=86", badge: "-10%", rating: "4.7", colors: ["#211914", "#684736", "#b38a6d"] },
   { name: "Essential Topper 12", category: "Topper", detail: "Cabello natural · Clip invisible", price: "279 €", image: "https://images.unsplash.com/photo-1562092139-cac69580cd74?auto=format&fit=crop&w=900&q=86", badge: "", rating: "4.8", colors: ["#2f211a", "#745442", "#c5a080"] },
@@ -55,14 +56,14 @@ export default function PelucasPage({ onNavigate }: Props) {
       <div className="bg-[#2d2926] px-5 py-2.5 text-center text-[10px] font-medium uppercase tracking-[0.24em] text-[#f6f0e6] sm:text-[11px]">Envío gratuito en pedidos superiores a 90 €</div>
       <header className="relative z-30 border-b border-black/10 bg-[#f7f4ee]">
         <div className="mx-auto flex h-[76px] max-w-[1380px] items-center justify-between px-5 sm:h-[88px] sm:px-8 lg:px-12">
-          <button className="catalog-menu-button lg:hidden" aria-label="Abrir menú" onClick={() => setMenuOpen(!menuOpen)}><span /><span /></button>
+          <MenuToggle expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} />
           <button onClick={() => onNavigate("Inicio")} className="font-display whitespace-nowrap text-[27px] leading-none tracking-[-0.04em] sm:text-[32px]">MAISON <span className="italic text-[#9a7452]">del cabello</span></button>
           <nav className="hidden items-center gap-8 text-xs font-semibold uppercase tracking-[0.15em] lg:flex">
             {["Inicio", "Prótesis", "Postizos", "Cuidado", "Accesorios"].map((item) => <button key={item} onClick={() => onNavigate(item)} className={`relative py-3 transition-colors hover:text-[#9a7452] ${item === "Prótesis" ? "text-[#9a7452]" : ""}`}>{item}{item === "Prótesis" && <span className="absolute inset-x-0 bottom-0 h-px bg-[#9a7452]" />}</button>)}<a className="py-3" href="#asesoria">Asesoría</a>
           </nav>
           <div className="flex items-center gap-1 sm:gap-3"><button className="icon-button hidden sm:flex" aria-label="Buscar"><Icon type="search" /></button><button className="icon-button hidden sm:flex" aria-label="Mi cuenta"><Icon type="user" /></button><button className="icon-button relative" aria-label="Cesta"><Icon type="bag" /><span className="absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-[#9a7452] text-[8px] text-white">2</span></button></div>
         </div>
-        {menuOpen && <nav className="absolute inset-x-0 top-full border-y border-black/10 bg-[#f7f4ee] px-6 py-5 shadow-xl lg:hidden">{["Inicio", "Prótesis", "Postizos", "Cuidado", "Accesorios", "Asesoría"].map((item) => <button key={item} className={`block w-full border-b border-black/10 py-3 text-left text-sm uppercase tracking-[0.18em] last:border-0 ${item === "Prótesis" ? "text-[#9a7452]" : ""}`} onClick={() => { onNavigate(item); setMenuOpen(false); }}>{item}</button>)}</nav>}
+        {menuOpen && <nav className="absolute inset-x-0 top-full border-y border-black/10 bg-[#f7f4ee] px-6 py-5 shadow-xl">{["Inicio", "Prótesis", "Postizos", "Cuidado", "Accesorios", "Asesoría"].map((item) => <button key={item} aria-current={item === "Prótesis" ? "page" : undefined} className={`block w-full border-b border-black/10 py-3 text-left text-sm uppercase tracking-[0.18em] last:border-0 ${item === "Prótesis" ? "text-[#9a7452]" : ""}`} onClick={() => { onNavigate(item); setMenuOpen(false); }}>{item}</button>)}</nav>}
       </header>
 
       <section className="catalog-intro mx-auto max-w-[1440px] px-5 pb-8 pt-9 sm:px-8 sm:pb-10 sm:pt-12 lg:px-12">

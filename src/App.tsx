@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PelucasPage from "./PelucasPage";
+import MenuToggle from "./MenuToggle";
 
 const heroImage =
   "https://images.unsplash.com/photo-1625503336205-fba8025fa0f1?auto=format&fit=crop&w=1400&q=88";
@@ -112,16 +113,7 @@ export default function App() {
 
       <header className="relative z-30 border-b border-black/10 bg-[#f7f4ee]">
         <div className="mx-auto flex h-[76px] max-w-[1380px] items-center justify-between px-5 sm:h-[88px] sm:px-8 lg:px-12">
-          <button
-            className="flex h-10 w-10 items-center justify-center lg:hidden"
-            aria-label="Abrir menú"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <span className="relative h-3.5 w-5">
-              <span className="absolute left-0 top-0 h-px w-5 bg-current" />
-              <span className="absolute left-0 top-[7px] h-px w-3.5 bg-current" />
-            </span>
-          </button>
+          <MenuToggle expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} />
 
           <a className="font-display text-[27px] leading-none tracking-[-0.04em] sm:text-[32px]" href="#">
             MAISON <span className="italic text-[#9a7452]">del cabello</span>
@@ -165,12 +157,13 @@ export default function App() {
         </div>
 
         {menuOpen && (
-          <nav className="absolute inset-x-0 top-full border-y border-black/10 bg-[#f7f4ee] px-6 py-5 shadow-xl lg:hidden">
+          <nav className="absolute inset-x-0 top-full border-y border-black/10 bg-[#f7f4ee] px-6 py-5 shadow-xl">
             {["Inicio", "Prótesis", "Postizos", "Cuidado", "Accesorios", "Asesoría"].map(
               (item) => (
                 <button
                   key={item}
-                  className="block w-full border-b border-black/10 py-3 text-left text-sm uppercase tracking-[0.18em] last:border-0"
+                  className={`block w-full border-b border-black/10 py-3 text-left text-sm uppercase tracking-[0.18em] last:border-0 ${activeCategory === item ? "text-[#9a7452]" : ""}`}
+                  aria-current={activeCategory === item ? "page" : undefined}
                   onClick={() => {
                     navigateTo(item)
                   }}
@@ -250,7 +243,7 @@ export default function App() {
               Selección de la maison
             </p>
             <h2 className="font-display text-5xl tracking-[-0.04em] sm:text-6xl">
-              Belleza, sin artificios.
+              Acabados naturales
             </h2>
           </div>
           <a className="text-link self-start sm:self-auto" href="#">
