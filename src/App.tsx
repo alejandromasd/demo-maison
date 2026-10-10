@@ -157,7 +157,7 @@ export default function App() {
         </div>
 
         {menuOpen && (
-          <nav className="absolute inset-x-0 top-full border-y border-black/10 bg-[#f7f4ee] px-6 py-5 shadow-xl">
+          <nav className="absolute inset-x-0 top-full border-y border-black/10 bg-[#f7f4ee] px-6 py-5 shadow-xl lg:hidden">
             {["Inicio", "Prótesis", "Postizos", "Cuidado", "Accesorios", "Asesoría"].map(
               (item) => (
                 <button
